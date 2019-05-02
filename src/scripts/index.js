@@ -29,17 +29,20 @@ const cards = [
     },
     {
      name: 'simcity',
-     img: './images/simcity.png',
+     img: './images/simcity.jpg',
     }
 ]
 
 const game = document.getElementById('game');
+
+let count = 0;
 
 const grid = document.createElement('section');
 grid.setAttribute('class', 'grid');
 game.appendChild(grid);
 
 let gameGrid = cards.concat(cards)
+gameGrid.sort(() => 0.5 - Math.random())
 
 gameGrid.forEach(item => {
     const card = document.createElement('div')
@@ -48,3 +51,19 @@ gameGrid.forEach(item => {
     card.style.backgroundImage = `url(${item.img})`
     grid.appendChild(card)
 })
+
+grid.addEventListener('click', function(event) {
+
+    let clicked = event.target
+
+    if (clicked.nodeName === 'SECTION') {
+        return
+      }
+
+    if (count < 2) {
+      count++
+    clicked.classList.add('selected')
+  }}
+)
+
+
