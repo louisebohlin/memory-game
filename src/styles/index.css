@@ -18,20 +18,39 @@ body {
   }
 
 .card {
+    position: relative;
+    transition: all 0.4s linear;
+    transform-style: preserve-3d;
     margin: 5px;
-    background-color: white;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+  }
+
+.card,
+.back,
+.front {
     height: 150px;
     width: 150px;
   }
-
-.selected {
-   border: 4px solid blue;
+  
+.back,
+.front {
+  position: absolute;
+  backface-visibility: hidden;
 }
 
-.match {
-  border: 4px solid red;
-  background-image: none !important;
+.front {
+  background: linear-gradient(to right, #e1eec3, #f05053);
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.selected {
+  transform: rotateY(180deg);
+}
+
+.match .front {
+  background: linear-gradient(to bottom, #bdc3c7, #2c3e50) !important;
 }
